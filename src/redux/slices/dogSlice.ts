@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SERVER_URL } from '../../utils/constants';
+import { SERVER_URL } from '../../utils/constants.js';
 import { RootState, AppThunk } from '../store';
 import axios from "axios";
 

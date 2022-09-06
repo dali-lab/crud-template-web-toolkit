@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { SERVER_URL } from '../../utils/constants';
+import { SERVER_URL } from '../../utils/constants.js';
 import { RootState, AppThunk } from '../store';
 import axios from "axios";
 
 export interface ConnectionState {
-  isConnected: boolean,
+  isConnected: boolean, // is connected to backend; does not necessarily mean user is logged in
 }
 
 const initialState: ConnectionState = {
