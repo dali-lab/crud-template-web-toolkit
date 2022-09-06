@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import dogReducer from './slices/dogSlice';
 import connectionReducer from './slices/connectionSlice';
+import userReducer from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
     dogs: dogReducer,
     connection: connectionReducer,
+    user: userReducer,
   },
 });
 

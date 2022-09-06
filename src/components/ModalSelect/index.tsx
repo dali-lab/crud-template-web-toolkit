@@ -13,9 +13,11 @@ export function ModalSelect() {
   const [display, setDisplay] = useState<boolean>(false);
   const ref: RefObject<any> = useRef(null);
 
+  /*
   useEffect(() => {
     dispatch(getAllBreeds())
   }, []);
+  */
 
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
