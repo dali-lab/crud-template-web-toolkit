@@ -3,12 +3,16 @@ import useAppSelector from '../../hooks/useAppSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import './styles.scss';
 
-export function AppPhoto() {
-  const { selectedBreedPhotoUrl } = useAppSelector((state) => state.dogs);
+interface AppPhotoProps {
+  url: string,
+  children: React.ReactNode;
+}
 
+const AppPhoto = ({ url, children }: AppPhotoProps) => {
   return (
     <div className="app-photo">
-      <img className='img' src={selectedBreedPhotoUrl} alt='photo' />
+      <img className='img' src={url} alt='default' />
+      {<>{children}</>}
     </div>
   );
 }

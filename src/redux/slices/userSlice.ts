@@ -153,6 +153,7 @@ export const userSlice = createSlice({
       if ('token' in action.payload) {
         setBearerToken(action.payload.token);
         state = ({ ...state, ...action.payload.user });
+        state.authenticated = true;
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${action.payload.token}`; 
@@ -164,6 +165,7 @@ export const userSlice = createSlice({
         "Authorization"
       ] = `Bearer ${action.payload.token}`; 
       state = ({ ...state, ...action.payload.user });
+      state.authenticated = true;
       return state;
     });
     builder.addCase(jwtSignIn.rejected, () => initialState);
@@ -172,6 +174,7 @@ export const userSlice = createSlice({
       if (action.payload) {
         setBearerToken(action.payload.token);
         state = ({ ...state, ...action.payload.user });
+        state.authenticated = true;
       }
       return state;
     });
