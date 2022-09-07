@@ -11,16 +11,16 @@ export interface IResource {
 }
 
 export interface ResourceState {
+  loading: boolean,
   all: Record<string, IResource>,
-  selected: string | undefined,
   indices: {
     byValue: Record<number, string> // value => id
   }
 }
 
 const initialState: ResourceState = {
+  loading: false,
   all: {},
-  selected: undefined,
   indices: {
     byValue: {},
   }
@@ -28,7 +28,7 @@ const initialState: ResourceState = {
 
 export const getAllResources = createAsyncThunk(
   'resources/getAllResources',
-  async ({}, { dispatch }) => {
+  async (req: {}, { dispatch }) => {
     dispatch(startResourceLoading());
     return await axios
       .get<IResource[]>(`${SERVER_URL}resources/`)
@@ -45,7 +45,7 @@ export const getAllResources = createAsyncThunk(
 
 export const createResource = createAsyncThunk(
   'resources/createResource',
-  async (req: { title: string, description: string, value: string }, { dispatch }) => {
+  async (req: { title: string, description: string, value: number }, { dispatch }) => {
     dispatch(startResourceLoading());
     return await axios
       .post(`${SERVER_URL}resources/`, req)
@@ -96,7 +96,7 @@ export const updateResource = createAsyncThunk(
 
 export const deleteResource = createAsyncThunk(
   'resources/deleteResource',
-  async (req: IResource, { dispatch }) => {
+  async (req: { id: string }, { dispatch }) => {
     dispatch(startResourceLoading());
     return await axios
       .delete(`${SERVER_URL}resources/${req.id}`)
