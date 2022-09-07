@@ -4,7 +4,6 @@ export const authTokenName = 'authToken';
  * Gets the site-stored authToken from localStorage and returns it in the form of an authorization header
  */
 export function getBearerToken() {
-  console.log(localStorage.getItem(authTokenName));
   return localStorage.getItem(authTokenName);
 }
 

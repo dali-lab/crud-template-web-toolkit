@@ -28,10 +28,10 @@ const ProtectedRoute = ({ allowableScopes, children }: ProtectedRouteProps) => {
     return <ForbiddenPage />
   }
   
-  return ( // TODO: How to return without having to wrap in div
-    <div>
-      {<>{children}</>}
-    </div>
+  return (
+    <>
+      {children}
+    </>
   );
 }
 

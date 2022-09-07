@@ -95,6 +95,9 @@ export const jwtSignIn = createAsyncThunk(
       })
       .finally(() => dispatch(stopUserLoading()))
       .then((response) => {
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${token}`; 
         return response.data;
       })
       .catch((err) => {
@@ -161,9 +164,6 @@ export const userSlice = createSlice({
       }
     });
     builder.addCase(jwtSignIn.fulfilled, (state, action) => {
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${action.payload.token}`; 
       state = ({ ...state, ...action.payload.user });
       state.authenticated = true;
       return state;

@@ -11,7 +11,8 @@ This repository is the default frontend starter for new DALI React projects. Ins
     .
     ├── ...    
     ├── public
-    ├── src                    
+    ├── src                
+    │   └── assets             # static assets   
     │   └── components         # reusable components across several screens
     │   └── hooks              # useAppDispatch, useAppSelector
     │   └── redux              # Redux store and setup
