@@ -7,7 +7,7 @@ import useAppSelector from '../hooks/useAppSelector';
 import useAppDispatch from '../hooks/useAppDispatch';
 import { checkConnection } from '../redux/slices/connectionSlice';
 import { ROUTES } from '../utils/constants';
-import { UserScopes } from '../redux/slices/userSlice';
+import { UserScopes } from '../redux/slices/usersSlice';
 import FrontPage from './FrontPage';
 import ErrorPage from './ErrorPage';
 import ForbiddenPage from './ForbiddenPage';
@@ -22,7 +22,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = ({ allowableScopes, children }: ProtectedRouteProps) => {
-  const { authenticated, role } = useAppSelector((state) => state.user);
+  const { authenticated, role } = useAppSelector((state) => state.auth);
 
   if (!allowableScopes.includes(role) || !authenticated) {
     return <ForbiddenPage />

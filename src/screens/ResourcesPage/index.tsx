@@ -8,7 +8,8 @@ import {
   updateResource, 
   deleteResource, 
   IResource 
-} from '../../redux/slices/resourceSlice';
+} from '../../redux/slices/resourcesSlice';
+import { ROUTES } from '../../utils/constants';
 
 function ResourcePage() {
   const { loading, all } = useAppSelector((state) => state.resources);
@@ -57,9 +58,7 @@ function ResourcePage() {
 
   return (
     <div className='container'>
-      <PageHeader
-        title='Resource Page'
-      >
+      <PageHeader title={'Resource Page'} toLink={ROUTES.HOME}>
       </PageHeader>
       { loading
         ? <p>Loading...</p>

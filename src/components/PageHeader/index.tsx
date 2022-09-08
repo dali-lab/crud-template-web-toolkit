@@ -7,16 +7,17 @@ import './styles.scss';
 
 interface AppPhotoProps {
   title: string,
+  toLink: string,
   children: React.ReactNode;
 }
 
-const PageHeader = ({ title, children }: AppPhotoProps) => {
+const PageHeader = ({ title, toLink, children }: AppPhotoProps) => {
   const navigate = useNavigate();
   return (
     <div className='page-header'>
       <BsBoxArrowLeft
         className='button'
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(toLink)}
         style={{fontSize: '40'}}
       />
       <h1>{title}</h1>

@@ -3,12 +3,7 @@ import { SERVER_URL } from '../../utils/constants.js';
 import { RootState, AppThunk } from '../store';
 import axios from 'axios';
 import { getBearerToken, setBearerToken } from '../../utils/localStorage.js';
-
-export enum UserScopes {
-  Unverified = 'UNVERIFIED',
-  User = 'USER',
-  Admin = 'ADMIN',
-}
+import { UserScopes } from './usersSlice';
 
 export interface UserState {
   authenticated: boolean,
@@ -136,8 +131,8 @@ export const verify = createAsyncThunk(
   }
 );
 
-export const userSlice = createSlice({
-  name: 'user',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<LoginResponse>) => {
@@ -182,6 +177,6 @@ export const userSlice = createSlice({
 });
 
 export const { setCredentials, logout, startUserLoading, stopUserLoading } =
-  userSlice.actions;
+  authSlice.actions;
 
-export default userSlice.reducer;
+export default authSlice.reducer;

@@ -5,7 +5,7 @@ import { store } from './redux/store';
 import { getBearerToken } from './utils/localStorage';
 import App from './screens/App';
 import './styles.scss';
-import { jwtSignIn, logout } from './redux/slices/userSlice';
+import { jwtSignIn, logout } from './redux/slices/authSlice';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
