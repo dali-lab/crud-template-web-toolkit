@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAppSelector from '../../hooks/useAppSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { signUp } from '../../redux/slices/userSlice';
+import { signUp } from '../../redux/slices/authSlice';
 
 function SignUpPage() {
   const dispatch = useAppDispatch();

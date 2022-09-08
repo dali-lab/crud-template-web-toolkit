@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAppSelector from '../../hooks/useAppSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { signIn } from '../../redux/slices/userSlice';
+import { signIn } from '../../redux/slices/authSlice';
 
 function SignInPage() {
   const dispatch = useAppDispatch();
