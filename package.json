@@ -1,7 +1,16 @@
 {
   "name": "crud-template-frontend-redux-toolkit",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "DALI Lab Frontend CRUD template w/ TypeScript, Redux Toolkit",
+  "productionURL": "https://your-api-url.here",
+  "productionClientURL": "https://your-app-url.here",
+  "repository": "https://github.com/dali-lab/crud-template-frontend-postgres",
+  "author": "Eric Lu <Eric.J.Lu.25@dartmouth.edu>",
+  "contributors": [
+    "Adam McQuilkin <Adam.J.Mcquilkin.22@Dartmouth.edu>",
+    "Tyler Vergho <Tyler.K.Vergho.23@dartmouth.edu>"
+  ],
+  "license": "MIT",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
