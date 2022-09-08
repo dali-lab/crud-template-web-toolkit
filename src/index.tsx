@@ -14,7 +14,7 @@ const authToken = getBearerToken();
 if(authToken) {
   store.dispatch(jwtSignIn(authToken));
 } else {
-  store.dispatch(logout());
+  store.dispatch(logout({}));
 }
 
 root.render(

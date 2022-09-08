@@ -15,6 +15,7 @@ import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import UsersPage from './UsersPage';
 import ResourcesPage from './ResourcesPage';
+import VerifyPage from './VerifyPage';
 
 interface ProtectedRouteProps {
   allowableScopes: UserScopes[];
@@ -68,6 +69,16 @@ function App() {
               allowableScopes={[UserScopes.User, UserScopes.Admin]}
             >
               <ResourcesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path={ROUTES.VERIFY} 
+          element={
+            <ProtectedRoute
+              allowableScopes={[UserScopes.Unverified]}
+            >
+              <VerifyPage />
             </ProtectedRoute>
           }
         />

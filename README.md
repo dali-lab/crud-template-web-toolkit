@@ -6,6 +6,7 @@ This repository is the default frontend starter for new DALI React projects. Ins
 - [React v18](https://reactjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [axios](https://github.com/axios/axios)
+- [React Router v6](https://reactrouter.com/en/main)
 
 ## Directory Structure
     .
@@ -45,3 +46,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+## Authors & Credits
+- Eric Lu '25
+
+Additional credit goes to Adam McQuilkin '22,  Thomas Monfre '21, Tyler Vergho '23 for developing the original DALI [CRUD Template Frontend](https://github.com/dali-lab/crud-template-frontend), which this starter pack was evolved from.
