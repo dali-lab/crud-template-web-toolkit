@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useAppSelector from '../../hooks/useAppSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { resendCode, verify } from '../../redux/slices/authSlice';
 
-function SignInPage() {
+function VerifyPage() {
   const dispatch = useAppDispatch();
   const { id, email } = useAppSelector((state) => state.auth);
   const [code, setCode] = useState<string>('');
@@ -29,4 +29,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default VerifyPage;

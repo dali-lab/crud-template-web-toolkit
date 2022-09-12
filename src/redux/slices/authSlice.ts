@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/indent */
 import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit';
 import { SERVER_URL } from '../../utils/constants.js';
-import { RootState, AppThunk } from '../store';
 import axios from 'axios';
-import { getBearerToken, setBearerToken } from '../../utils/localStorage.js';
+import { setBearerToken } from '../../utils/localStorage.js';
 import { UserScopes } from './usersSlice';
 
 export interface AuthState {
@@ -38,7 +38,7 @@ export const signUp = createAsyncThunk(
   'auth/signup',
   async (credentials: { email: string, password: string, name: string }, { dispatch }) => {
     dispatch(startAuthLoading());
-    return await axios
+    return axios
       .post(`${SERVER_URL}auth/signup`, credentials)
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
@@ -49,14 +49,15 @@ export const signUp = createAsyncThunk(
         console.error('Error when signing up', error);
         return false;
       });
-  }
+  },
 );
 
 export const signIn = createAsyncThunk(
   'auth/signin',
   async (credentials: { email: string, password: string }, { dispatch, getState }) => {
+    console.log(`${SERVER_URL}auth/signin`);
     dispatch(startAuthLoading());
-    return await axios
+    return axios
       .post<LoginResponse>(`${SERVER_URL}auth/signin`, credentials)
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
@@ -72,44 +73,42 @@ export const signIn = createAsyncThunk(
       })
       .catch((error) => {
         alert(
-          'Unable to log in, please ensure your email and password are correct.'
+          'Unable to log in, please ensure your email and password are correct.',
         );
         console.error('Error when logging in', error);
         throw error;
       });
-  }
+  },
 );
 
 export const jwtSignIn = createAsyncThunk(
   'auth/jwt-signin',
   async (token: string, { dispatch }) => {
     dispatch(startAuthLoading());
-    return await axios
+    return axios
       .get<LoginResponse>(`${SERVER_URL}auth/jwt-signin/`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${token}`; 
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`; 
         return response.data;
       })
       .catch((err) => {
         console.error(err);
-        alert("Your login session has expired.");
+        alert('Your login session has expired.');
         throw err;
       });
-  }
+  },
 );
 
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (req: {}, { dispatch }) => {
+  async (req: unknown, { dispatch }) => {
     dispatch(startAuthLoading());
-    return await axios
+    return axios
       .post(`${SERVER_URL}auth/logout`)
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
@@ -119,16 +118,16 @@ export const logout = createAsyncThunk(
         console.error('Logout attempt failed', err);
         throw err;
       });
-  }
-)
+  },
+);
 
 export const resendCode = createAsyncThunk(
   'auth/resend-code',
   async (req: { id: string, email: string }) => {
-    return await axios
+    return axios
       .post<LoginResponse>(`${SERVER_URL}auth/resend-code/${req.id}`, req)
       .then((response) => {
-        if(response.status === 201) {
+        if (response.status === 201) {
           return true;
         }
         return isRejectedWithValue(response.statusText);
@@ -136,13 +135,13 @@ export const resendCode = createAsyncThunk(
       .catch((error) => {
         console.error('Error when sending code', error);
       });
-  }
+  },
 );
 
 export const verify = createAsyncThunk(
   'auth/verify',
   async (req: { id: string, email: string; code: string }) => {
-    return await axios
+    return axios
       .patch<LoginResponse>(`${SERVER_URL}auth/verify/${req.id}`, req)
       .then((response) => {
         return response.data;
@@ -150,7 +149,7 @@ export const verify = createAsyncThunk(
       .catch((error) => {
         console.error('Error when verifying', error);
       });
-  }
+  },
 );
 
 export const authSlice = createSlice({
@@ -171,9 +170,7 @@ export const authSlice = createSlice({
         setBearerToken(action.payload.token);
         state = ({ ...state, ...action.payload.user });
         state.authenticated = true;
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${action.payload.token}`; 
+        axios.defaults.headers.common.Authorization = `Bearer ${action.payload.token}`; 
         return state;
       }
     });
@@ -185,12 +182,10 @@ export const authSlice = createSlice({
     builder.addCase(jwtSignIn.rejected, () => initialState);
     builder.addCase(logout.fulfilled, () => {
       setBearerToken('');
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${''}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${''}`;
       alert('Logged out of account');
       return initialState;
-    })
+    });
     builder.addCase(resendCode.fulfilled, () => {
       alert('Code sent to your email');
     });
@@ -201,7 +196,7 @@ export const authSlice = createSlice({
         state = ({ ...state, ...action.payload.user });
         state.authenticated = true;
       }
-      alert('Your account has been authorized!')
+      alert('Your account has been authorized!');
       return state;
     });
   },

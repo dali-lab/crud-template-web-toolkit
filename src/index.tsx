@@ -11,7 +11,7 @@ const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 const authToken = getBearerToken();
-if(authToken) {
+if (authToken) {
   store.dispatch(jwtSignIn(authToken));
 } else {
   store.dispatch(logout({}));
@@ -22,5 +22,5 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

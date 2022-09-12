@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsBoxArrowLeft } from 'react-icons/bs';
 import './styles.scss';
@@ -18,12 +16,12 @@ const PageHeader = ({ title, toLink, children }: AppPhotoProps) => {
       <BsBoxArrowLeft
         className='button'
         onClick={() => navigate(toLink)}
-        style={{fontSize: '40'}}
+        style={{ fontSize: '40' }}
       />
       <h1>{title}</h1>
       {<>{children}</>}
     </div>
   );
-}
+};
 
 export default PageHeader;

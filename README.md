@@ -1,4 +1,4 @@
-# Crud Template - Frontend - Redux Toolkit
+# CRUD Template - Frontend - Redux Toolkit
 
 This repository is the default frontend starter for new DALI React projects. Installation and setup instructions are included below. You should eventually customize this README file with project-specific documentation.
 
@@ -46,6 +46,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+### `npm run lint`
+
+ESLint is set up in this project. To keep code clean, always remember to run `yarn run lint` and fix any lint problems before merging into master.
 
 ## Authors & Credits
 - Eric Lu '25

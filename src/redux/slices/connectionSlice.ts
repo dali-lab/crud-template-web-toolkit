@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SERVER_URL } from '../../utils/constants.js';
-import { RootState, AppThunk } from '../store';
-import axios from "axios";
+import axios from 'axios';
 
 export interface ConnectionState {
   isConnected: boolean, // is connected to backend; does not necessarily mean user is logged in
@@ -9,12 +8,12 @@ export interface ConnectionState {
 
 const initialState: ConnectionState = {
   isConnected: false,
-}
+};
 
 export const checkConnection = createAsyncThunk(
   'connection',
   async () => {
-    return await axios
+    return axios
       .get<string>(`${SERVER_URL}`)
       .then((response) => {
         return response.data;
@@ -22,7 +21,7 @@ export const checkConnection = createAsyncThunk(
       .catch((err) => {
         throw err;
       });
-  }
+  },
 );
 
 export const connectionSlice = createSlice({
@@ -38,7 +37,7 @@ export const connectionSlice = createSlice({
     builder.addCase(checkConnection.rejected, (state) => {
       state.isConnected = false;
     });
-  }
+  },
 });
 
 export default connectionSlice.reducer;
