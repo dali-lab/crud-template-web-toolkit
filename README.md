@@ -1,4 +1,4 @@
-# CRUD Template - Frontend - Redux Toolkit
+# CRUD Template - Web Frontend - Redux Toolkit
 
 This repository is the default frontend starter for new DALI React projects. Installation and setup instructions are included below. You should eventually customize this README file with project-specific documentation.
 
