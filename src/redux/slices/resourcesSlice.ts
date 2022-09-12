@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SERVER_URL } from '../../utils/constants.js';
-import { RootState, AppThunk } from '../store';
 import axios from 'axios';
 
 export interface IResource {
@@ -23,14 +22,14 @@ const initialState: ResourceState = {
   all: {},
   indices: {
     byValue: {},
-  }
+  },
 };
 
 export const getAllResources = createAsyncThunk(
   'resources/getAllResources',
-  async (req: {}, { dispatch }) => {
+  async (req: unknown, { dispatch }) => {
     dispatch(startResourceLoading());
-    return await axios
+    return axios
       .get<IResource[]>(`${SERVER_URL}resources/`)
       .finally(() => dispatch(stopResourceLoading()))
       .then((response) => {
@@ -40,14 +39,14 @@ export const getAllResources = createAsyncThunk(
         console.error('Error when getting all resources', error);
         return false;
       });
-  }
+  },
 );
 
 export const createResource = createAsyncThunk(
   'resources/createResource',
   async (req: { title: string, description: string, value: number }, { dispatch }) => {
     dispatch(startResourceLoading());
-    return await axios
+    return axios
       .post(`${SERVER_URL}resources/`, req)
       .finally(() => dispatch(stopResourceLoading()))
       .then((response) => {
@@ -57,14 +56,14 @@ export const createResource = createAsyncThunk(
         console.error('Error when creating resource', error);
         return false;
       });
-  }
+  },
 );
 
 export const getResource = createAsyncThunk(
   'resources/getResource',
   async (id: string, { dispatch }) => {
     dispatch(startResourceLoading());
-    return await axios
+    return axios
       .get(`${SERVER_URL}resources/${id}`)
       .finally(() => dispatch(stopResourceLoading()))
       .then((response) => {
@@ -74,14 +73,14 @@ export const getResource = createAsyncThunk(
         console.error('Error when getting resource', error);
         return false;
       });
-  }
+  },
 );
 
 export const updateResource = createAsyncThunk(
   'resources/updateResource',
   async (req: IResource, { dispatch }) => {
     dispatch(startResourceLoading());
-    return await axios
+    return axios
       .patch(`${SERVER_URL}resources/${req.id}`, req)
       .finally(() => dispatch(stopResourceLoading()))
       .then((response) => {
@@ -91,14 +90,14 @@ export const updateResource = createAsyncThunk(
         console.error('Error when getting resource', error);
         return false;
       });
-  }
+  },
 );
 
 export const deleteResource = createAsyncThunk(
   'resources/deleteResource',
   async (req: { id: string }, { dispatch }) => {
     dispatch(startResourceLoading());
-    return await axios
+    return axios
       .delete(`${SERVER_URL}resources/${req.id}`)
       .finally(() => dispatch(stopResourceLoading()))
       .then((response) => {
@@ -108,7 +107,7 @@ export const deleteResource = createAsyncThunk(
         console.error('Error when getting resource', error);
         return false;
       });
-  }
+  },
 );
 
 export const resourceSlice = createSlice({
@@ -150,7 +149,7 @@ export const resourceSlice = createSlice({
       delete state.indices.byValue[resource.value];
       alert('Deleted resource with id ' + resource.id);
     });
-  }
+  },
 });
 
 export const { startResourceLoading, stopResourceLoading } =

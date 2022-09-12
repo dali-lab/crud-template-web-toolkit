@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SERVER_URL } from '../../utils/constants.js';
-import { RootState, AppThunk } from '../store';
 import axios from 'axios';
 
 export enum UserScopes {
@@ -31,7 +30,7 @@ export const createUser = createAsyncThunk(
   'users/createUser',
   async (req: { email: string, password: string, name: string }, { dispatch }) => {
     dispatch(startUsersLoading());
-    return await axios
+    return axios
       .post(`${SERVER_URL}users/`, req)
       .finally(() => dispatch(stopUsersLoading()))
       .then((response) => {
@@ -41,14 +40,14 @@ export const createUser = createAsyncThunk(
         console.error('Error when creating user', error);
         return false;
       });
-  }
+  },
 );
 
 export const getUser = createAsyncThunk(
   'users/getUser',
   async (req: { id: string }, { dispatch }) => {
     dispatch(startUsersLoading());
-    return await axios
+    return axios
       .get(`${SERVER_URL}users/${req.id}`)
       .finally(() => dispatch(stopUsersLoading()))
       .then((response) => {
@@ -58,14 +57,14 @@ export const getUser = createAsyncThunk(
         console.error('Error when getting user', error);
         return false;
       });
-  }
+  },
 );
 
 export const updateUser = createAsyncThunk(
   'users/updateUser',
   async (req: { id: string, email: string, password: string, role: UserScopes }, { dispatch }) => {
     dispatch(startUsersLoading());
-    return await axios
+    return axios
       .patch(`${SERVER_URL}users/${req.id}`, req)
       .finally(() => dispatch(stopUsersLoading()))
       .then((response) => {
@@ -75,14 +74,14 @@ export const updateUser = createAsyncThunk(
         console.error('Error when updating user', error);
         return false;
       });
-  }
+  },
 );
 
 export const deleteUser = createAsyncThunk(
   'users/deleteUser',
   async (req: { id: string }, { dispatch }) => {
     dispatch(startUsersLoading());
-    return await axios
+    return axios
       .delete(`${SERVER_URL}users/${req.id}`)
       .finally(() => dispatch(stopUsersLoading()))
       .then((response) => {
@@ -92,7 +91,7 @@ export const deleteUser = createAsyncThunk(
         console.error('Error when deleting user', error);
         return false;
       });
-  }
+  },
 );
 
 export const resourceSlice = createSlice({
@@ -118,12 +117,12 @@ export const resourceSlice = createSlice({
     builder.addCase(deleteUser.fulfilled, (state, action) => {
       const user: IUser = action.payload as IUser;
       const curSelectedUser = state.selectedUser as IUser;
-      if(curSelectedUser.id === user.id) {
+      if (curSelectedUser.id === user.id) {
         state.selectedUser = undefined;
       }
       alert('Deleted user with id ' + user.id);
     });
-  }
+  },
 });
 
 export const { startUsersLoading, stopUsersLoading } =

@@ -15,7 +15,7 @@ function UsersPage() {
     else {
       dispatch(getUser({ id: getId }));
     }
-  }
+  };
 
   const [createEmail, setCreateEmail] = useState<string>('');
   const [createPassword, setCreatePassword] = useState<string>('');

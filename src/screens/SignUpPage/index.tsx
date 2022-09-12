@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
+import React, { useState } from 'react';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { signUp } from '../../redux/slices/authSlice';
 

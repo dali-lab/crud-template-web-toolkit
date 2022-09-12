@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
+import React from 'react';
 import './styles.scss';
 
 interface AppPhotoProps {
@@ -15,6 +13,6 @@ const AppPhoto = ({ url, children }: AppPhotoProps) => {
       {<>{children}</>}
     </div>
   );
-}
+};
 
 export default AppPhoto;

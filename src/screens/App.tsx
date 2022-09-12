@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  Routes, Route, NavLink,
+  Routes, Route,
 } from 'react-router-dom';
 import useAppSelector from '../hooks/useAppSelector';
 import useAppDispatch from '../hooks/useAppDispatch';
@@ -26,7 +26,7 @@ const ProtectedRoute = ({ allowableScopes, children }: ProtectedRouteProps) => {
   const { authenticated, role } = useAppSelector((state) => state.auth);
 
   if (!allowableScopes.includes(role) || !authenticated) {
-    return <ForbiddenPage />
+    return <ForbiddenPage />;
   }
   
   return (
@@ -34,7 +34,7 @@ const ProtectedRoute = ({ allowableScopes, children }: ProtectedRouteProps) => {
       {children}
     </>
   );
-}
+};
 
 function App() {
   const { isConnected } = useAppSelector((state) => state.connection);
@@ -42,9 +42,9 @@ function App() {
   
   useEffect(() => {
     dispatch(checkConnection());
-  }, [])
+  }, []);
 
-  if (!isConnected) return <ErrorPage />
+  if (!isConnected) return <ErrorPage />;
 
   return (
     <Router>

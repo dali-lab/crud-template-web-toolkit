@@ -7,7 +7,7 @@ import {
   createResource, 
   updateResource, 
   deleteResource, 
-  IResource 
+  IResource, 
 } from '../../redux/slices/resourcesSlice';
 import { ROUTES } from '../../utils/constants';
 
@@ -55,7 +55,6 @@ function ResourcePage() {
     }
   };
   
-
   return (
     <div className='container'>
       <PageHeader title={'Resource Page'} toLink={ROUTES.HOME}>
@@ -65,7 +64,7 @@ function ResourcePage() {
         : (
           <>
             <form onSubmit={handleGetAllResourcesSubmit}>
-              <button type="submit">Fetch All Resources</button>
+              <button type="submit">Get All Resources</button>
             </form>
             <div>
               {
