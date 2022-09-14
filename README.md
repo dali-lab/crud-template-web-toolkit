@@ -7,7 +7,7 @@ This repository is an optional frontend starter for new DALI React projects. Ins
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [axios](https://github.com/axios/axios)
 - [React Router v6](https://reactrouter.com/en/main)
-- TypeScript
+- [TypeScript](https://www.typescriptlang.org/docs/)
 
 ## Directory Structure
     .
