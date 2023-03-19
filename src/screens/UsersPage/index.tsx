@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
-import PageHeader from '../../components/PageHeader';
-import { createUser, getUser, updateUser, deleteUser, UserScopes } from '../../redux/slices/usersSlice';
-import { ROUTES } from '../../utils/constants';
+import useAppSelector from 'hooks/useAppSelector';
+import useAppDispatch from 'hooks/useAppDispatch';
+import PageHeader from 'components/PageHeader';
+import { createUser, getUser, updateUser, deleteUser } from 'redux/slices/usersSlice';
+import { UserScopes } from 'types/users';
+import { ROUTES } from 'utils/constants';
 
 function UsersPage() {
   const { loading, selectedUser } = useAppSelector((state) => state.users);

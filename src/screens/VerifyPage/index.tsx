@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
-import { resendCode, verify } from '../../redux/slices/authSlice';
+import useAppSelector from 'hooks/useAppSelector';
+import useAppDispatch from 'hooks/useAppDispatch';
+import { resendCode, verify } from 'redux/slices/authSlice';
 
 function VerifyPage() {
   const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
 import React from 'react';
-import useAppDispatch from '../../hooks/useAppDispatch';
-import AppPhoto from '../../components/AppPhoto';
+import useAppDispatch from 'hooks/useAppDispatch';
+import AppPhoto from 'components/AppPhoto';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../utils/constants';
-import { logout } from '../../redux/slices/authSlice';
+import { ROUTES } from 'utils/constants';
+import { logout } from 'redux/slices/authSlice';
 
 function FrontPage() {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ function FrontPage() {
   return (
     <div className='container'>
       <AppPhoto
-        url={require('../../assets/dali_dark.png')}
+        url={require('assets/dali_dark.png')}
       >
       </AppPhoto>
       <div>

@@ -11,6 +11,6 @@ export function getBearerToken() {
  * Sets a returned token in localStorage for attachment to later network requests
  * @param {*} token - A valid JWT authentication token
  */
-export function setBearerToken(token) {
+export function setBearerToken(token: string) {
   localStorage.setItem(authTokenName, token);
 }

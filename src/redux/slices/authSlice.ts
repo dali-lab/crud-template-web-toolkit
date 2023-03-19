@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/indent */
 import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit';
-import { SERVER_URL } from '../../utils/constants.js';
+import { SERVER_URL } from 'utils/constants.js';
 import axios from 'axios';
-import { setBearerToken } from '../../utils/localStorage.js';
-import { UserScopes } from './usersSlice';
+import { getBearerToken, setBearerToken } from 'utils/localStorage';
+import { UserScopes } from 'types/users';
 
 export interface AuthState {
   authenticated: boolean,
@@ -33,6 +33,25 @@ interface LoginResponse {
     role: UserScopes,
   }
 }
+
+export const setCredentials = createAsyncThunk(
+  'setCredentials',
+  (token: string) => {
+    setBearerToken(token);
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+);
+
+export const initCredentials = createAsyncThunk(
+  'initCredentials',
+  async (req: unknown, { dispatch }) => {
+    const token = getBearerToken();
+    if (token) {
+      dispatch(setCredentials(token));
+    } 
+    else dispatch(logout({}));
+  },
+);
 
 export const signUp = createAsyncThunk(
   'auth/signup',
@@ -68,6 +87,7 @@ export const signIn = createAsyncThunk(
             verified: false,
           };
         }
+        dispatch(setCredentials(response.data.token));
         alert('Signed In!');
         return { ...response.data };
       })
@@ -83,7 +103,12 @@ export const signIn = createAsyncThunk(
 
 export const jwtSignIn = createAsyncThunk(
   'auth/jwt-signin',
-  async (token: string, { dispatch }) => {
+  async (req: unknown, { dispatch }) => {
+    const token = getBearerToken();
+    if (!token) {
+      throw Error('null token');
+    }
+    
     dispatch(startAuthLoading());
     return axios
       .get<LoginResponse>(`${SERVER_URL}auth/jwt-signin/`, {
@@ -93,7 +118,9 @@ export const jwtSignIn = createAsyncThunk(
       })
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`; 
+        if (token) {
+          dispatch(setCredentials(token));
+        }
         return response.data;
       })
       .catch((err) => {
@@ -112,6 +139,7 @@ export const logout = createAsyncThunk(
       .post(`${SERVER_URL}auth/logout`)
       .finally(() => dispatch(stopAuthLoading()))
       .then((response) => {
+        dispatch(setCredentials(''));
         return response.data;
       })
       .catch((err) => {
@@ -156,21 +184,14 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, action: PayloadAction<LoginResponse>) => {
-      setBearerToken(action.payload.token);
-      state = ({ ...state, ...action.payload.user });
-      return state;
-    },
     startAuthLoading: (state) => ({ ...state, loading: true }),
     stopAuthLoading: (state) => ({ ...state, loading: false }),
   },
   extraReducers: (builder) => {
     builder.addCase(signIn.fulfilled, (state, action) => {
       if ('token' in action.payload) {
-        setBearerToken(action.payload.token);
         state = ({ ...state, ...action.payload.user });
         state.authenticated = true;
-        axios.defaults.headers.common.Authorization = `Bearer ${action.payload.token}`; 
         return state;
       }
     });
@@ -181,8 +202,6 @@ export const authSlice = createSlice({
     });
     builder.addCase(jwtSignIn.rejected, () => initialState);
     builder.addCase(logout.fulfilled, () => {
-      setBearerToken('');
-      axios.defaults.headers.common.Authorization = `Bearer ${''}`;
       alert('Logged out of account');
       return initialState;
     });
@@ -202,7 +221,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, startAuthLoading, stopAuthLoading } =
+export const { startAuthLoading, stopAuthLoading } =
   authSlice.actions;
 
 export default authSlice.reducer;

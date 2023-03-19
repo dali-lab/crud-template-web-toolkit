@@ -1,20 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { SERVER_URL } from '../../utils/constants.js';
+import { SERVER_URL } from 'utils/constants.js';
 import axios from 'axios';
-
-export enum UserScopes {
-  Unverified = 'UNVERIFIED',
-  User = 'USER',
-  Admin = 'ADMIN',
-}
-
-export interface IUser {
-  id: string;
-  email: string;
-  // no password
-  name: string;
-  role: UserScopes;
-}
+import { IUser, UserScopes } from 'types/users';
 
 export interface UserState {
   loading: boolean,

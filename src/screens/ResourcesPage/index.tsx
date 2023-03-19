@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
-import PageHeader from '../../components/PageHeader';
+import useAppSelector from 'hooks/useAppSelector';
+import useAppDispatch from 'hooks/useAppDispatch';
+import PageHeader from 'components/PageHeader';
 import { 
   getAllResources, 
   createResource, 
   updateResource, 
   deleteResource, 
   IResource, 
-} from '../../redux/slices/resourcesSlice';
-import { ROUTES } from '../../utils/constants';
+} from 'redux/slices/resourcesSlice';
+import { ROUTES } from 'utils/constants';
 
 function ResourcePage() {
   const { loading, all } = useAppSelector((state) => state.resources);
