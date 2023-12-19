@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import useAppDispatch from 'hooks/useAppDispatch';
-import { signIn } from 'redux/slices/authSlice';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { signIn } from '../../redux/slices/authSlice';
 
 function SignInPage() {
   const dispatch = useAppDispatch();

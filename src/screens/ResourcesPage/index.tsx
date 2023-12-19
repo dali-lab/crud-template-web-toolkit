@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import useAppSelector from 'hooks/useAppSelector';
-import useAppDispatch from 'hooks/useAppDispatch';
-import PageHeader from 'components/PageHeader';
+import useAppSelector from '../../hooks/useAppSelector';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import PageHeader from '../../components/PageHeader';
 import { 
   getAllResources, 
   createResource, 
   updateResource, 
   deleteResource, 
   IResource, 
-} from 'redux/slices/resourcesSlice';
-import { ROUTES } from 'utils/constants';
+} from '../../redux/slices/resourcesSlice';
+import { ROUTES } from '../../utils/constants';
 
 function ResourcePage() {
   const { loading, all } = useAppSelector((state) => state.resources);
@@ -67,9 +67,10 @@ function ResourcePage() {
               <button type="submit">Get All Resources</button>
             </form>
             <div>
-              {
+              {/* {
+                // TODO: Fix typings
                 Object.values(all).map((r: IResource) => <h5>{r.id}, {r.title}, {r.description}, {r.value}</h5>)
-              }
+              } */}
             </div>
             <form onSubmit={handleCreateResourceSubmit}>
               <input type="text" placeholder="Title" value={createTitle} onChange={(e) => setCreateTitle(e.target.value)} />

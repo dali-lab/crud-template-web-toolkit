@@ -1,19 +1,19 @@
 import React from 'react';
-import useAppDispatch from 'hooks/useAppDispatch';
-import AppPhoto from 'components/AppPhoto';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import AppPhoto from '../../components/AppPhoto';
 import { Link } from 'react-router-dom';
-import { ROUTES } from 'utils/constants';
-import { logout } from 'redux/slices/authSlice';
+import { ROUTES } from '../../utils/constants';
+import { logout } from '../../redux/slices/authSlice';
 
 function FrontPage() {
   const dispatch = useAppDispatch();
   
   return (
     <div className='container'>
-      <AppPhoto
+      {/* <AppPhoto
         url={require('assets/dali_dark.png')}
       >
-      </AppPhoto>
+      </AppPhoto> */}
       <div>
         <h1>DALI Crud Template</h1>
       </div>

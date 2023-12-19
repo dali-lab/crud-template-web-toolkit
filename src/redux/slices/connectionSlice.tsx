@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { SERVER_URL } from 'utils/constants.js';
+import { SERVER_URL } from '../../utils/constants';
 import axios from 'axios';
 
 export interface ConnectionState {

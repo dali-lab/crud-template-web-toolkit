@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { SERVER_URL } from 'utils/constants.js';
+import { SERVER_URL } from '../../utils/constants';
 import axios from 'axios';
-import { IUser, UserScopes } from 'types/users';
+import { IUser, UserScopes } from '../../types/users';
 
 export interface UserState {
   loading: boolean,

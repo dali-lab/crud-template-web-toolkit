@@ -6,7 +6,7 @@ import './styles.scss';
 interface AppPhotoProps {
   title: string,
   toLink: string,
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const PageHeader = ({ title, toLink, children }: AppPhotoProps) => {
