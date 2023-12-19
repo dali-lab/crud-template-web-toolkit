@@ -7,7 +7,7 @@ import App from './screens/App';
 import './styles.scss';
 import { jwtSignIn, logout } from './redux/slices/authSlice';
 
-const container = document.getElementById('root')!;
+const container = document.getElementById('main')!;
 const root = createRoot(container);
 
 const authToken = getBearerToken();

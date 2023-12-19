@@ -1,9 +1,11 @@
 import React from 'react';
-import useAppDispatch from 'hooks/useAppDispatch';
-import AppPhoto from 'components/AppPhoto';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import AppPhoto from '../../components/AppPhoto';
 import { Link } from 'react-router-dom';
-import { ROUTES } from 'utils/constants';
-import { logout } from 'redux/slices/authSlice';
+import { ROUTES } from '../../utils/constants';
+import { logout } from '../../redux/slices/authSlice';
+import DaliDarkImg from '../../assets/dali_dark.png';
+import { SERVER_URL } from '../../utils/constants';
 
 function FrontPage() {
   const dispatch = useAppDispatch();
@@ -11,11 +13,14 @@ function FrontPage() {
   return (
     <div className='container'>
       <AppPhoto
-        url={require('assets/dali_dark.png')}
+        url={DaliDarkImg}
       >
       </AppPhoto>
       <div>
         <h1>DALI Crud Template</h1>
+      </div>
+      <div>
+        Using SERVER_URL = {SERVER_URL}
       </div>
       <Link to={ROUTES.SIGNIN}>
         <h1>Sign In</h1>

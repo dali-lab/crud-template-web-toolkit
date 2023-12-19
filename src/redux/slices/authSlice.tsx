@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/indent */
 import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit';
-import { SERVER_URL } from 'utils/constants.js';
+import { SERVER_URL } from '../../utils/constants';
 import axios from 'axios';
-import { getBearerToken, setBearerToken } from 'utils/localStorage';
-import { UserScopes } from 'types/users';
+import { getBearerToken, setBearerToken } from '../../utils/localStorage';
+import { UserScopes } from '../../types/users';
 
 export interface AuthState {
   authenticated: boolean,

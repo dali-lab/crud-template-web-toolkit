@@ -3,11 +3,11 @@ import {
   BrowserRouter as Router,
   Routes, Route,
 } from 'react-router-dom';
-import useAppSelector from 'hooks/useAppSelector';
-import useAppDispatch from 'hooks/useAppDispatch';
-import { checkConnection } from 'redux/slices/connectionSlice';
-import { ROUTES } from 'utils/constants';
-import { UserScopes } from 'types/users';
+import useAppSelector from '../hooks/useAppSelector';
+import useAppDispatch from '../hooks/useAppDispatch';
+import { checkConnection } from '../redux/slices/connectionSlice';
+import { ROUTES } from '../utils/constants';
+import { UserScopes } from '../types/users';
 import FrontPage from './FrontPage';
 import ErrorPage from './ErrorPage';
 import ForbiddenPage from './ForbiddenPage';
