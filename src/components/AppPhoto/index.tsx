@@ -3,7 +3,7 @@ import './styles.scss';
 
 interface AppPhotoProps {
   url: string,
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AppPhoto = ({ url, children }: AppPhotoProps) => {

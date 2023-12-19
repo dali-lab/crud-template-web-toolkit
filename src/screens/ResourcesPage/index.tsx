@@ -67,10 +67,9 @@ function ResourcePage() {
               <button type="submit">Get All Resources</button>
             </form>
             <div>
-              {/* {
-                // TODO: Fix typings
+              {
                 Object.values(all).map((r: IResource) => <h5>{r.id}, {r.title}, {r.description}, {r.value}</h5>)
-              } */}
+              }
             </div>
             <form onSubmit={handleCreateResourceSubmit}>
               <input type="text" placeholder="Title" value={createTitle} onChange={(e) => setCreateTitle(e.target.value)} />
