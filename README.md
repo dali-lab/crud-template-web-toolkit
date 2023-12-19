@@ -16,6 +16,7 @@ This repository is the default frontend starter for new DALI React projects. Ins
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [axios](https://github.com/axios/axios)
 - [React Router v6](https://reactrouter.com/en/main)
+- [Vite](https://vitejs.dev/)
 
 #### External Packages
 - [Description of any notable added services]
@@ -37,7 +38,7 @@ We are using [typically a configuration like [CS52's React-Native ESLint Configu
     │   └── screens            # individual pages
     │   └── utils              # utility folder containing helper files
     ├── tsconfig.json          # TypeScript configuration
-    ├── package.json           # npm config
+    ├── package.json           # yarn config
     └── ...
 
 For more detailed documentation on our file structure and specific functions in the code, feel free to check the project files themselves.
@@ -46,11 +47,11 @@ For more detailed documentation on our file structure and specific functions in 
 
 In the project directory, you can run:
 
-### `npm install`
+### `yarn install`
 
 Installs project dependencies.
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -58,7 +59,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -66,7 +67,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-### `npm run lint`
+### `yarn run lint`
 
 ESLint is set up in this project. To keep code clean, always remember to run `yarn run lint` and fix any lint problems before merging into master.
 
