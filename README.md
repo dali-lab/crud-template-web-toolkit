@@ -1,6 +1,6 @@
-# CRUD Template - Frontend - Redux Toolkit
+# CRUD Template - Web Frontend - Redux Toolkit
 
-This repository is the default frontend starter for new DALI React projects. Installation and setup instructions are included below. You should eventually customize this README file with project-specific documentation.
+This repository is an optional frontend starter for new DALI React projects. Installation and setup instructions are included below. You should eventually customize this README file with project-specific documentation.
 
 ## Designs
 
@@ -16,6 +16,7 @@ This repository is the default frontend starter for new DALI React projects. Ins
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [axios](https://github.com/axios/axios)
 - [React Router v6](https://reactrouter.com/en/main)
+- [TypeScript](https://www.typescriptlang.org/docs/)
 - [Vite](https://vitejs.dev/)
 
 #### External Packages
