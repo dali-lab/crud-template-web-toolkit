@@ -1,4 +1,4 @@
-export const SERVER_URL = 'http://localhost:9090/';
+export const SERVER_URL = import.meta.env.VITE_REACT_APP_BASE_API_URL;
 
 export const ROUTES = {
   HOME: '/',
